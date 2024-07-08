@@ -30,10 +30,8 @@ def upload_data():
         if not os.path.exists("./tmp"):
             os.makedirs("./tmp")
         file.save(filepath)
-        
         data = pd.read_csv(filepath)
         db.data.insert_many(data.to_dict('records'))
-        
         return jsonify({"message": "File successfully uploaded", "data": data.to_dict()}), 200
     
     except Exception as e:
