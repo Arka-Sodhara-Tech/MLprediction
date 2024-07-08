@@ -73,9 +73,7 @@ def forecast(data):
         model.compile(optimizer='adam', loss='mean_squared_error')
         model.fit(train[:-1], train[1:], epochs=10, batch_size=1, verbose=2)
         prediction = model.predict(train[-1].reshape(1, 1, train.shape[2]))
-
         return float(prediction[0][0])
-
     except Exception as e:
         return str(e)
 
